@@ -28,7 +28,7 @@ export default function Books() {
     fetchBooks();
   }, [category, query]);
 
-  // if no books from api hasnt fetched yet, return loading
+  // if books from api hasnt fetched yet, return loading
   if (!books) return <h1>Loading...</h1>;
 
   // when books has finally fetched return this
