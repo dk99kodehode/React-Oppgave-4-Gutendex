@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import styles from "./Gutendex.module.css";
 
 export default function Books() {
   const [books, setBooks] = useState([]);
@@ -17,11 +18,14 @@ export default function Books() {
   if (!books.length) return <h1>Loading...</h1>;
 
   return (
-    <div>
+    <div className={styles.books}>
       {books.slice(0, 10).map((book) => (
         <div key={book.id}>
           <h2>{book.title}</h2>
-          <p>{book.authors.map((author) => author.name).join(", ")}</p>
+          <img src={book.formats["image/jpeg"]} alt={book.title} />
+          <p>
+            Authored by:{book.authors.map((author) => author.name).join(", ")}
+          </p>
         </div>
       ))}
     </div>
