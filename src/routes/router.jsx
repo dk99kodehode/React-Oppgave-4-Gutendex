@@ -12,6 +12,10 @@ export const router = createBrowserRouter([
         index: true,
         element: <Books />,
       },
+      {
+        path: "search/:category/:query?",
+        element: <Books />,
+      },
     ],
   },
 ]);

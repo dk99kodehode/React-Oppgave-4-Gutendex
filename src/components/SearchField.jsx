@@ -1,21 +1,34 @@
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDebouncer } from "../hooks/useDebouncer";
+
 import styles from "./NavBar.module.css";
 
 export default function SearchField() {
   const [text, setText] = useState("");
-  const [category, setCategory] = useState("novel");
+  const [category, setCategory] = useState("Fiction");
+
   const navigate = useNavigate();
+  const location = useLocation();
 
   const debouncedText = useDebouncer(text);
   const query = debouncedText;
 
   useEffect(() => {
-    if (location === "search") {
-      navigate(`search/${category}/${query}`);
+    // useLocation returns an object, so we need to check pathname.
+    // also changes routing to /search/${category}
+    if (location.pathname.startsWith("/search")) {
+      navigate(`/search/${category}/${query}`);
     }
   }, [query]);
+
+  // function that changes category and url to the new category with text from option
+  function handleCategoryChange(e) {
+    const newCategory = e.target.value;
+    setCategory(newCategory);
+
+    navigate(`/search/${newCategory}/${text}`);
+  }
 
   return (
     <>
@@ -27,15 +40,16 @@ export default function SearchField() {
             type="text"
             onChange={(e) => setText(e.target.value)}
             onKeyDown={(e) =>
-              e.key === "Enter" && navigate(`search/${category}/${text}`)
+              e.key === "Enter" && navigate(`/search/${category}/${text}`)
             }
           />
         </div>
+
         <div>
           <select
             className={styles.category}
             value={category}
-            onChange={(e) => setCategory(e.target.value)}
+            onChange={handleCategoryChange}
           >
             <option value="Fiction">Fiction</option>
             <option value="Mystery">Mystery</option>
