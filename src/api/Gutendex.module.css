@@ -1,0 +1,11 @@
+.books {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.book img {
+  width: 200px;
+}

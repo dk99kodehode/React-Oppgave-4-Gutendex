@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 
 import App from "../App";
-import Books from "../api/Gundetex";
+import Books from "../api/Gutendex";
 
 export const router = createBrowserRouter([
   {

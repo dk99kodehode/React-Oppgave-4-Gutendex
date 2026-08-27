@@ -21,11 +21,13 @@ export default function Books() {
     <div className={styles.books}>
       {books.slice(0, 10).map((book) => (
         <div key={book.id}>
-          <h2>{book.title}</h2>
-          <img src={book.formats["image/jpeg"]} alt={book.title} />
-          <p>
-            Authored by:{book.authors.map((author) => author.name).join(", ")}
-          </p>
+          <div className={styles.book}>
+            <h3>{book.title}</h3>
+            <img src={book.formats["image/jpeg"]} alt={book.title} />
+            <p>
+              Authored by:{book.authors.map((author) => author.name).join(", ")}
+            </p>
+          </div>
         </div>
       ))}
     </div>
