@@ -1,0 +1,23 @@
+.navbar {
+  gap: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.search {
+  width: 300px;
+}
+
+.searchContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.category {
+  width: 310px;
+}
+
+.navlink {
+  text-decoration: none;
+}
