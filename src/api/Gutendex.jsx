@@ -9,7 +9,7 @@ export default function Books() {
   // checkes whether the category exists if not default back to fiction
   // if there is a query for example "thriller" call the api again
   const [books, setBooks] = useState([]);
-  const { category = "Fiction", query = "" } = useParams();
+  const { category = "Thriller", query = "" } = useParams();
 
   const fetchBooks = async () => {
     const url = query

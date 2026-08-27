@@ -5,7 +5,10 @@
 }
 
 .search {
-  width: 300px;
+  width: 200px;
+  padding: 5px;
+  border-radius: 12px;
+  border: none;
 }
 
 .searchContainer {
@@ -15,7 +18,12 @@
 }
 
 .category {
-  width: 310px;
+  margin-top: 0.5rem;
+  width: 200px;
+  padding: 4px;
+  border-radius: 12px;
+  text-align: center;
+  border: none;
 }
 
 .navlink {
