@@ -38,7 +38,7 @@ export default function Books() {
       {books.slice(0, 21).map((book) => (
         <div key={book.id}>
           <div className={styles.book}>
-            <h3>{book.title}</h3>
+            <h3 className={styles.booktitle}>{book.title}</h3>
 
             <img src={book.formats["image/jpeg"]} alt={book.title} />
 
