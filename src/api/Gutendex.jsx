@@ -10,6 +10,7 @@ export default function Books() {
   // if there is a query for example "thriller" call the api again
   const [books, setBooks] = useState([]);
   const { category = "Fiction", query = "" } = useParams();
+  const [showSummary, setShowSummary] = useState(null);
 
   const fetchBooks = async () => {
     const url = query
@@ -39,13 +40,25 @@ export default function Books() {
         <div key={book.id}>
           <div className={styles.book}>
             <h3 className={styles.booktitle}>{book.title}</h3>
-
-            <img src={book.formats["image/jpeg"]} alt={book.title} />
-
+            {/*-----BOOK IMAGE-----*/}
+            <img
+              onClick={() => {
+                setShowSummary(showSummary === book.id ? null : book.id);
+              }}
+              src={book.formats["image/jpeg"]}
+              alt={book.title}
+              className={styles.card}
+            />
+            {/*-------AUTHOR-----*/}
             <p className={styles.author}>
               Authored by:
               {book.authors.map((author) => author.name).join(", ")}
             </p>
+            {/*-------SUMMARY-----*/}
+
+            {showSummary === book.id && (
+              <p className={styles.summary}>Summary: {book.summaries}</p>
+            )}
           </div>
         </div>
       ))}

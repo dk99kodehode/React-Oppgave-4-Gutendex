@@ -8,10 +8,22 @@
 
 .booktitle {
   font-size: 18px;
+  color: white;
+}
+
+.card:hover {
+  scale: 1.04;
+  transition: transform 0.2s ease-in-out;
+}
+
+.card:active {
 }
 
 .author {
-  font-size: 6px;
+  font-size: 18px;
+}
+
+.summary {
 }
 
 .book img {
