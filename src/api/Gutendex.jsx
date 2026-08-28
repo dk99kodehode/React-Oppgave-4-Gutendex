@@ -47,6 +47,9 @@ export default function Books() {
               alt={book.title}
               className={styles.card}
             />
+
+            <p className={styles.cardCategory}>{book.subjects[0]}</p>
+
             {/*-------AUTHOR-----*/}
             <p className={styles.author}>
               Authored by:
