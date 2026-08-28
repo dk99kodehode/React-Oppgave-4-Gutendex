@@ -1,5 +1,5 @@
-import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useDebouncer } from "../hooks/useDebouncer";
 
 import styles from "./NavBar.module.css";
@@ -9,64 +9,50 @@ export default function SearchField() {
   const [category, setCategory] = useState("Fiction");
 
   const navigate = useNavigate();
-  const location = useLocation();
 
   const debouncedText = useDebouncer(text);
-  const query = debouncedText;
 
   useEffect(() => {
-    // useLocation returns an object, so we need to check pathname.
-    // also changes routing to /search/${category}
-    if (location.pathname.startsWith("/search")) {
-      navigate(`/search/${category}/${query}`);
-    }
-  }, [query]);
+    navigate(`/search/${category}/${encodeURIComponent(debouncedText)}`, {
+      replace: true,
+    });
+  }, [debouncedText, category, navigate]);
 
-  // function that changes category and url to the new category with text from option
   function handleCategoryChange(e) {
-    const newCategory = e.target.value;
-    setCategory(newCategory);
+    setCategory(e.target.value);
 
-    navigate(`/search/${newCategory}/${text}`);
+    console.log("text:", text);
+    console.log("debounced:", debouncedText);
   }
 
   return (
-    <>
-      <div className={styles.searchContainer}>
-        <div>
-          <input
-            className={styles.search}
-            value={text}
-            type="text"
-            onChange={(e) => setText(e.target.value)}
-            onKeyDown={(e) =>
-              e.key === "Enter" && navigate(`/search/${category}/${text}`)
-            }
-          />
-        </div>
+    <div className={styles.searchContainer}>
+      <input
+        className={styles.search}
+        value={text}
+        type="text"
+        onChange={(e) => setText(e.target.value)}
+      />
 
-        <div>
-          <select
-            className={styles.category}
-            value={category}
-            onChange={handleCategoryChange}
-          >
-            <option value="Fiction">Fiction</option>
-            <option value="Mystery">Mystery</option>
-            <option value="Thriller">Thriller</option>
-            <option value="Romance">Romance</option>
-            <option value="Fantasy">Fantasy</option>
-            <option value="Morality">Morality</option>
-            <option value="Society">Society</option>
-            <option value="Power">Power</option>
-            <option value="Justice">Justice</option>
-            <option value="Adventure">Adventure</option>
-            <option value="Tragedy">Tragedy</option>
-            <option value="War">War</option>
-            <option value="Philosophy">Philosophy</option>
-          </select>
-        </div>
-      </div>
-    </>
+      <select
+        className={styles.category}
+        value={category}
+        onChange={handleCategoryChange}
+      >
+        <option value="Fiction">Fiction</option>
+        <option value="Mystery">Mystery</option>
+        <option value="Thriller">Thriller</option>
+        <option value="Romance">Romance</option>
+        <option value="Fantasy">Fantasy</option>
+        <option value="Morality">Morality</option>
+        <option value="Society">Society</option>
+        <option value="Power">Power</option>
+        <option value="Justice">Justice</option>
+        <option value="Adventure">Adventure</option>
+        <option value="Tragedy">Tragedy</option>
+        <option value="War">War</option>
+        <option value="Philosophy">Philosophy</option>
+      </select>
+    </div>
   );
 }

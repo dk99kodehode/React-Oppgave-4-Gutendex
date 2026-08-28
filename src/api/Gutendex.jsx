@@ -14,16 +14,14 @@ export default function Books() {
 
   const fetchBooks = async () => {
     const url = query
-      ? `https://gutendex.com/books?topic=${encodeURIComponent(category)}&search=${encodeURIComponent(query)}`
+      ? `https://gutendex.com/books?search=${encodeURIComponent(query)}`
       : `https://gutendex.com/books?topic=${encodeURIComponent(category)}`;
 
     const response = await fetch(url);
-
     const data = await response.json();
 
     setBooks(data.results);
   };
-
   // will call on the api again if a category or query is changed
   useEffect(() => {
     fetchBooks();
@@ -54,8 +52,8 @@ export default function Books() {
               Authored by:
               {book.authors.map((author) => author.name).join(", ")}
             </p>
-            {/*-------SUMMARY-----*/}
 
+            {/*-------SUMMARY-----*/}
             {showSummary === book.id && (
               <p className={styles.summary}>Summary: {book.summaries}</p>
             )}
