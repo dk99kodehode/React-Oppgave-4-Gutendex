@@ -11,12 +11,6 @@
   border: none;
 }
 
-.searchContainer {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-}
-
 .category {
   margin-top: 0.5rem;
   width: 200px;

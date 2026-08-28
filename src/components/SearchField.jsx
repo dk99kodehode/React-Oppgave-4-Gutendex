@@ -17,6 +17,7 @@ export default function SearchField() {
 
   const debouncedText = useDebouncer(text);
 
+  // 1 time event that will change whether url category or search field text is changed
   useEffect(() => {
     navigate(`/search/${category}/${encodeURIComponent(debouncedText)}`, {
       replace: true,
@@ -31,14 +32,15 @@ export default function SearchField() {
   }
 
   return (
-    <div className={styles.searchContainer}>
+    <div className={styles.container}>
+      🔍
       <input
         className={styles.search}
         value={text}
         type="text"
         onChange={(e) => setText(e.target.value)}
       />
-
+      ≡
       <select
         className={styles.category}
         value={category}
