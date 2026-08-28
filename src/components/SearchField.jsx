@@ -1,8 +1,13 @@
+// components and usestates
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDebouncer } from "../hooks/useDebouncer";
 
+// styling
 import styles from "./NavBar.module.css";
+
+// default search field category is fiction
+// will call upon the api with use effect depending if debounced text , category or ulr has changed
 
 export default function SearchField() {
   const [text, setText] = useState("");
