@@ -9,7 +9,7 @@ export default function Books() {
   // checkes whether the category exists if not default back to fiction
   // if there is a query for example "thriller" call the api again
   const [books, setBooks] = useState([]);
-  const { category = "Thriller", query = "" } = useParams();
+  const { category = "Fiction", query = "" } = useParams();
 
   const fetchBooks = async () => {
     const url = query
@@ -42,7 +42,7 @@ export default function Books() {
 
             <img src={book.formats["image/jpeg"]} alt={book.title} />
 
-            <p>
+            <p className={styles.author}>
               Authored by:
               {book.authors.map((author) => author.name).join(", ")}
             </p>
