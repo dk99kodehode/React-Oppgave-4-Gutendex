@@ -33,33 +33,40 @@ export default function SearchField() {
 
   return (
     <div className={styles.container}>
-      🔍
-      <input
-        className={styles.search}
-        value={text}
-        type="text"
-        onChange={(e) => setText(e.target.value)}
-      />
-      ≡
-      <select
-        className={styles.category}
-        value={category}
-        onChange={handleCategoryChange}
-      >
-        <option value="Fiction">Fiction</option>
-        <option value="Mystery">Mystery</option>
-        <option value="Thriller">Thriller</option>
-        <option value="Romance">Romance</option>
-        <option value="Fantasy">Fantasy</option>
-        <option value="Morality">Morality</option>
-        <option value="Society">Society</option>
-        <option value="Power">Power</option>
-        <option value="Justice">Justice</option>
-        <option value="Adventure">Adventure</option>
-        <option value="Tragedy">Tragedy</option>
-        <option value="War">War</option>
-        <option value="Philosophy">Philosophy</option>
-      </select>
+      <div className={styles.searchWrapper}>
+        <span className={styles.searchIcon}>🔍</span>
+
+        <input
+          className={styles.search}
+          value={text}
+          type="text"
+          onChange={(e) => setText(e.target.value)}
+        />
+      </div>
+
+      <div className={styles.categoryWrapper}>
+        <span className={styles.categoryIcon}>≡</span>
+
+        <select
+          className={styles.category}
+          value={category}
+          onChange={handleCategoryChange}
+        >
+          <option value="Fiction">Fiction</option>
+          <option value="Mystery">Mystery</option>
+          <option value="Thriller">Thriller</option>
+          <option value="Romance">Romance</option>
+          <option value="Fantasy">Fantasy</option>
+          <option value="Morality">Morality</option>
+          <option value="Society">Society</option>
+          <option value="Power">Power</option>
+          <option value="Justice">Justice</option>
+          <option value="Adventure">Adventure</option>
+          <option value="Tragedy">Tragedy</option>
+          <option value="War">War</option>
+          <option value="Philosophy">Philosophy</option>
+        </select>
+      </div>
     </div>
   );
 }
