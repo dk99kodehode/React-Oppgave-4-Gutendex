@@ -24,7 +24,7 @@ export default function Books() {
 
       const response = await fetch(url);
 
-      // if no response thorw error with response status
+      // gives error if response is not successfull
       if (!response.ok) {
         throw new Error(`Request failed: ${response.status}`);
       }
@@ -41,7 +41,8 @@ export default function Books() {
     }
   };
 
-  // 1 time effect that pulls fetches again if category or query is changed
+  // 1 time effect that pulls fetchbooks function
+  // arguements being category and query which would make the api call again
   useEffect(() => {
     fetchBooks();
   }, [category, query]);
