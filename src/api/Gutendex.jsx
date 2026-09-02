@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import styles from "./Gutendex.module.css";
 
 export default function Books() {
-  // puts books in array
+  // stores the books in an array
   // default loading to true and false whenever finsished loading
 
   const [books, setBooks] = useState([]);
@@ -31,7 +31,7 @@ export default function Books() {
 
       const data = await response.json();
 
-      // double checks for errors and if no errors setLoading false and set book in data.results or an array
+      // stores the books or an empty if no results are found
       setBooks(data.results || []);
     } catch (error) {
       console.error("Error fetching books:", error);
